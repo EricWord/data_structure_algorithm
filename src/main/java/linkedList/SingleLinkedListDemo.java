@@ -18,10 +18,17 @@ public class SingleLinkedListDemo {
         //创建链表
         SingleLikedList singleLikedList = new SingleLikedList();
         //加入
-        singleLikedList.add(node1);
-        singleLikedList.add(node2);
-        singleLikedList.add(node3);
-        singleLikedList.add(node4);
+//        singleLikedList.add(node1);
+//        singleLikedList.add(node2);
+//        singleLikedList.add(node3);
+//        singleLikedList.add(node4);
+
+
+        //按照编号顺序加入
+        singleLikedList.addByOrder(node1);
+        singleLikedList.addByOrder(node4);
+        singleLikedList.addByOrder(node2);
+        singleLikedList.addByOrder(node3);
 
         //显示单链表
         singleLikedList.list();
@@ -93,6 +100,50 @@ class SingleLikedList {
         }
         //循环结束时就到了链表的尾部
         temp.next = node;
+
+
+    }
+
+
+    /**
+     * 按照英雄的编号添加
+     *
+     * @param node
+     */
+    public void addByOrder(HeroNode node) {
+        HeroNode temp = head;
+        //表示添加的编号是否存在
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {
+                //指针已经到达链表最后
+                break;
+
+            }
+
+            if (temp.next.no > node.no) {//位置找到，就在temp的后面插入
+                //结束
+                break;
+            } else if (temp.next.no == node.no) {
+                //希望添加的英雄的编号已经存在
+                flag = true;
+                break;
+
+            }
+            //指针后移
+            temp = temp.next;
+        }
+
+        //遍历完毕后到底要不要添加英雄到链表中，要通过flag的值来判断
+        if (flag) {
+            //说明英雄编号已经存在
+            System.out.println("英雄编号已经存在！");
+        } else {
+            //插入到链表中，temp的后面
+            node.next = temp.next;
+            temp.next = node;
+
+        }
 
 
     }
