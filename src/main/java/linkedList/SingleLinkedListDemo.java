@@ -1,5 +1,7 @@
 package linkedList;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 /**
  * @Description 单链表
  * @Author eric
@@ -30,6 +32,18 @@ public class SingleLinkedListDemo {
         singleLikedList.addByOrder(node2);
         singleLikedList.addByOrder(node3);
 
+
+        //单链表的反转
+        System.out.println("原始链表：");
+        singleLikedList.list();
+
+        System.out.println("反转后的单链表：");
+
+        singleLikedList.reverseLinkedList(singleLikedList.getHead());
+        singleLikedList.list();
+
+
+        /*
         //显示单链表
         System.out.println("修改前的链表：");
         singleLikedList.list();
@@ -46,6 +60,11 @@ public class SingleLinkedListDemo {
 
         //输出链表有有效节点的个数
         System.out.println(getLength(singleLikedList.getHead()));
+
+        HeroNode lastIndexNode = findLastIndexNode(singleLikedList.getHead(), 1);
+        System.out.println("倒数节点：");
+        System.out.println(lastIndexNode);
+        */
 
     }
 
@@ -306,6 +325,36 @@ class SingleLikedList {
         } else {
             System.out.println("要删除的节点不存在！");
         }
+
+
+    }
+
+
+    //单链表反转
+    public    void reverseLinkedList(HeroNode head){
+        //当前链表为空或者只有一个结点，不需要反转
+        if(head.next==null|| head.next.next==null){
+            return;
+
+        }
+        //用来遍历整个链表
+        HeroNode cur=head.next;
+        //指向当前结点【cur】的下一个结点
+        HeroNode next=null;
+        HeroNode reverseHead = new HeroNode(0, "", "");
+        //遍历原来的链表，每遍历一个结点就将其取出，并放在新的链表reverseHead的最前端
+        while (cur!=null){
+            //如果cur为空说明已经遍历结束
+            next=cur.next;//先暂时保存当前节点的下一个结点
+            cur.next=reverseHead.next;
+            reverseHead.next=cur;
+            cur=next;
+
+
+        }
+        //将head.next指向reverseHead.next
+        head.next=reverseHead.next;
+
 
 
     }
