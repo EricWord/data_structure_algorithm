@@ -2,6 +2,8 @@ package linkedList;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
+import java.util.Stack;
+
 /**
  * @Description 单链表
  * @Author eric
@@ -34,13 +36,13 @@ public class SingleLinkedListDemo {
 
 
         //单链表的反转
-        System.out.println("原始链表：");
-        singleLikedList.list();
-
-        System.out.println("反转后的单链表：");
-
-        singleLikedList.reverseLinkedList(singleLikedList.getHead());
-        singleLikedList.list();
+//        System.out.println("原始链表：");
+//        singleLikedList.list();
+//
+//        System.out.println("反转后的单链表：");
+//
+//        singleLikedList.reverseLinkedList(singleLikedList.getHead());
+//        singleLikedList.list();
 
 
         /*
@@ -65,6 +67,11 @@ public class SingleLinkedListDemo {
         System.out.println("倒数节点：");
         System.out.println(lastIndexNode);
         */
+
+
+        //使用栈来逆序打印单链表
+        System.out.println("使用栈来逆序打印单链表");
+        singleLikedList.reversePrint(singleLikedList.getHead());
 
     }
 
@@ -358,6 +365,33 @@ class SingleLikedList {
 
 
     }
+
+    //逆序打印单链表的值
+    public void reversePrint(HeroNode head){
+        //空链表，不用打印
+        if(head.next==null){
+            return;
+
+        }
+
+        //创建一个栈，将各个节点压入栈中
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        HeroNode cur = head.next;
+        //将链表的所有节点压入栈中
+        while (cur!=null){
+            stack.push(cur);
+            //指针后移
+            cur=cur.next;
+
+        }
+        //打印栈中节点
+        while (stack.size()>0){
+            System.out.println(stack.pop());
+        }
+
+
+    }
+
 
 
     //显示链表
