@@ -141,32 +141,6 @@ public class SingleLinkedListDemo {
 }
 
 
-//定义HeroNode,每个对象就是一个节点
-class HeroNode {
-    public int no;
-    public String name;
-    public String nickName;
-    //指向下一个节点
-    public HeroNode next;
-
-
-    public HeroNode(int no, String name, String nickName) {
-        this.no = no;
-        this.name = name;
-        this.nickName = nickName;
-    }
-
-    @Override
-    public String toString() {
-        return "HeroNode{" +
-                "no=" + no +
-                ", name='" + name + '\'' +
-                ", nickName='" + nickName + '\'' +
-                '}';
-    }
-}
-
-
 //定义SingleLinkedList管理英雄
 class SingleLikedList {
     //先初始化一个头节点，头节点不要动，不存放具体的数据
@@ -338,38 +312,37 @@ class SingleLikedList {
 
 
     //单链表反转
-    public    void reverseLinkedList(HeroNode head){
+    public void reverseLinkedList(HeroNode head) {
         //当前链表为空或者只有一个结点，不需要反转
-        if(head.next==null|| head.next.next==null){
+        if (head.next == null || head.next.next == null) {
             return;
 
         }
         //用来遍历整个链表
-        HeroNode cur=head.next;
+        HeroNode cur = head.next;
         //指向当前结点【cur】的下一个结点
-        HeroNode next=null;
+        HeroNode next = null;
         HeroNode reverseHead = new HeroNode(0, "", "");
         //遍历原来的链表，每遍历一个结点就将其取出，并放在新的链表reverseHead的最前端
-        while (cur!=null){
+        while (cur != null) {
             //如果cur为空说明已经遍历结束
-            next=cur.next;//先暂时保存当前节点的下一个结点
-            cur.next=reverseHead.next;
-            reverseHead.next=cur;
-            cur=next;
+            next = cur.next;//先暂时保存当前节点的下一个结点
+            cur.next = reverseHead.next;
+            reverseHead.next = cur;
+            cur = next;
 
 
         }
         //将head.next指向reverseHead.next
-        head.next=reverseHead.next;
-
+        head.next = reverseHead.next;
 
 
     }
 
     //逆序打印单链表的值
-    public void reversePrint(HeroNode head){
+    public void reversePrint(HeroNode head) {
         //空链表，不用打印
-        if(head.next==null){
+        if (head.next == null) {
             return;
 
         }
@@ -378,20 +351,19 @@ class SingleLikedList {
         Stack<HeroNode> stack = new Stack<HeroNode>();
         HeroNode cur = head.next;
         //将链表的所有节点压入栈中
-        while (cur!=null){
+        while (cur != null) {
             stack.push(cur);
             //指针后移
-            cur=cur.next;
+            cur = cur.next;
 
         }
         //打印栈中节点
-        while (stack.size()>0){
+        while (stack.size() > 0) {
             System.out.println(stack.pop());
         }
 
 
     }
-
 
 
     //显示链表
