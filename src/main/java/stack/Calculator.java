@@ -67,6 +67,7 @@ public class Calculator {
 
             } else {
                 //如果是数直接入数栈
+                //这个地方有可能是多位数
                 numStack.push(ch - 48);
 
             }
