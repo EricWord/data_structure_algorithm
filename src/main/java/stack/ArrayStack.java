@@ -66,20 +66,91 @@ public class ArrayStack {
 
 
     //显示栈的情况
-    public void list(){
+    public void list() {
         //判断是否为空
-        if(isEmpty()){
+        if (isEmpty()) {
             System.out.println("栈为空！");
             return;
 
         }
 
-        for (int i = top; i >=0; i--) {
-            System.out.printf("stack[%d]=%d",i,stack[i]);
+        for (int i = top; i >= 0; i--) {
+            System.out.printf("stack[%d]=%d", i, stack[i]);
 
         }
 
 
+    }
+
+
+    /**
+     * 计算运算符的优先级
+     *
+     * @param op 运算符
+     * @return
+     */
+    public int getPriority(int op) {
+        if (op == '*' || op == '/') {
+            return 1;
+
+
+        }
+        if (op == '+' || op == '-') {
+            return 0;
+
+        }
+        //假定目前的计算器只有加减乘除
+        return -1;
+
+    }
+
+
+    /**
+     * 判断是否是运算符
+     *
+     * @param val 字符符号
+     * @return
+     */
+    public boolean isOp(char val) {
+        return val == '+' || val == '-' || val == '*' || val == '/';
+    }
+
+
+    /**
+     * 输入操作数和操作符后进行运算
+     *
+     * @param num1 操作数1
+     * @param num2 操作数2
+     * @param op   运算符
+     * @return
+     */
+    public int calc(int num1, int num2, int op) {
+        //计算结果
+        int res = 0;
+        switch (op) {
+            case '+':
+                res = num1 + num2;
+                break;
+            case '-':
+                res = num2 - num1;
+                break;
+            case '*':
+                res = num1 * num2;
+                break;
+            case '/':
+                res = num2 / num1;
+                break;
+            default:
+                break;
+        }
+        return res;
+
+    }
+
+
+    //返回栈顶元素的值
+    public int peek(){
+        return  stack[top];
     }
 
 
