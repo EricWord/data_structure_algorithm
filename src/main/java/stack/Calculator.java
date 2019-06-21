@@ -14,13 +14,15 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-        String expression = "7+2*6-2";
+        String expression = "7*2*2-5+1-5+3-4";
         //创建操作数栈和运算符栈
         ArrayStack numStack = new ArrayStack(10);
         ArrayStack opStack = new ArrayStack(10);
         int index = 0;//用于扫描
         int num1, num2;
         int op, res;
+        //用于拼接多位数
+        String keepNum = "";
         //将每次扫描得到的字符保存到ch中
         char ch = ' ';
         //循环扫描表达式
@@ -68,7 +70,28 @@ public class Calculator {
             } else {
                 //如果是数直接入数栈
                 //这个地方有可能是多位数
-                numStack.push(ch - 48);
+                //遍历到数字之后需要继续向后遍历一位数
+                keepNum += ch;
+                //如果ch已经是表达式的最后一位，就直接入栈
+                if (index == expression.length() - 1) {
+                    numStack.push(Integer.parseInt(keepNum));
+
+
+                } else {
+                    //判断下一个字符是否是数字
+                    if (opStack.isOp(expression.substring(index + 1, index + 2).charAt(0))) {
+                        //后一位是运算符，则入栈
+                        numStack.push(Integer.parseInt(keepNum));
+                        //清空keepNum
+                        keepNum = "";
+
+
+                    }
+                    //如果是数字，继续扫描
+                    //如果是运算符，则入栈
+
+                }
+
 
             }
 
