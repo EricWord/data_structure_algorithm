@@ -151,7 +151,7 @@ public class PolandNotation {
 
 
     //将中缀表达式转为后缀表达式
-    public static  List<String> parseSuffixExpression(List<String> ls){
+    public static  List<String> parseSuffixExression(List<String> ls){
         //符号栈
         Stack<String> stack1 = new Stack<>();
         //存放中间结果的栈
