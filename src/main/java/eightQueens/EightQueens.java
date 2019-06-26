@@ -11,6 +11,7 @@ public class EightQueens {
     private int max = 8;
     //皇后放置位置
     private int[] arr = new int[max];
+    private static  int count=0;
 
     /**
      * 思路：
@@ -27,6 +28,9 @@ public class EightQueens {
      */
 
     public static void main(String[] args) {
+        EightQueens eightQueens = new EightQueens();
+        eightQueens.check(0);
+        System.out.println(count);
 
 
     }
@@ -84,6 +88,7 @@ public class EightQueens {
 
     //输出皇后放置位置
     public void showPos() {
+        count++;
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + "\t");
 
