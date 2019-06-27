@@ -34,7 +34,7 @@ public class BubbleSort {
 
         sort(num);
         long end = System.currentTimeMillis();
-        System.out.println("耗时："+(end-start)+"毫秒");
+        System.out.println("耗时："+(end-start)+"毫秒");//9795毫秒
 
 
 

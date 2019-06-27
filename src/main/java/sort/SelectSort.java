@@ -1,6 +1,7 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @Description 选择排序
@@ -22,8 +23,20 @@ public class SelectSort {
      */
 
     public static void main(String[] args) {
-        int[] arr = {101, 34, 119, 1};
-        sort(arr);
+        //创建一个含有80000个元素的数组来测试冒泡排序的性能
+        int[] num = new int[80000];
+        Random random = new Random();
+        for (int i = 0; i < 80000; i++) {
+            num[i] = random.nextInt(80000) + 1;
+
+        }
+
+        long start = System.currentTimeMillis();
+
+        sort(num);
+        long end = System.currentTimeMillis();
+        System.out.println("耗时：" + (end - start) + "毫秒");//1853毫秒
+
 
     }
 
@@ -50,8 +63,8 @@ public class SelectSort {
                 arr[minIndex] = arr[i];
                 arr[i] = min;
             }
-            System.out.println("第" + (i + 1) + "轮后：");
-            System.out.println(Arrays.toString(arr));
+//            System.out.println("第" + (i + 1) + "轮后：");
+//            System.out.println(Arrays.toString(arr));
 
 
         }
