@@ -30,17 +30,26 @@ public class ShellSort {
             num[i] = random.nextInt(80000) + 1;
 
         }
+//        System.out.println("排序前：");
+//        System.out.println(Arrays.toString(num));
 
         long start = System.currentTimeMillis();
 
-        sort(num);
+        sort2(num);
+
         long end = System.currentTimeMillis();
         System.out.println("耗时：" + (end - start) + "毫秒");//5551毫秒
+//        System.out.println("排序后：");
+//        System.out.println(Arrays.toString(num));
 
 
     }
 
-
+    /**
+     * 交换式希尔排序
+     *
+     * @param arr
+     */
     public static void sort(int[] arr) {
 
 
@@ -64,6 +73,33 @@ public class ShellSort {
                 }
 
             }
+        }
+
+
+    }
+
+
+    //移动式希尔排序
+    public static void sort2(int[] arr) {
+        //增量gap，并逐渐缩小gap
+        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+            //从第gap个元素，对其所在组的元素逐个进行直接插入排序
+            for (int i = gap; i < arr.length; i++) {
+                //保存下标位置
+                int j = i;
+                int temp = arr[j];
+                if (arr[j] < arr[j - gap]) {
+                    while (j - gap >= 0 && temp < arr[j - gap]) {
+                        //移动
+                        arr[j] = arr[j - gap];
+                        j -= gap;
+                    }
+                    //退出循环后说明找到了temp插入的位置
+                    arr[j] = temp;
+                }
+
+            }
+
         }
 
 
