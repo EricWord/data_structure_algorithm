@@ -45,6 +45,7 @@ public class InsertSort {
     public static void sort(int[] arr) {
 
         for (int i = 1; i < arr.length; i++) {
+
             //定义待插入的数
             int insertVal = arr[i];
             //待插入数的索引
