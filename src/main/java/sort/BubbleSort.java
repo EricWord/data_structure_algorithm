@@ -26,7 +26,7 @@ public class BubbleSort {
         int[] num = new int[80000];
         Random random = new Random();
         for (int i = 0; i < 80000; i++) {
-            num[i] = random.nextInt(80000)+1;
+            num[i] = random.nextInt(80000) + 1;
 
         }
 
@@ -34,8 +34,7 @@ public class BubbleSort {
 
         sort(num);
         long end = System.currentTimeMillis();
-        System.out.println("耗时："+(end-start)+"毫秒");//9795毫秒
-
+        System.out.println("耗时：" + (end - start) + "毫秒");//9795毫秒
 
 
     }

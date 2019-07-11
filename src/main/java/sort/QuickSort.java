@@ -1,6 +1,7 @@
 package sort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @Description 快速排序
@@ -21,10 +22,23 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
-        int[] arr = {-9, 78, 0, 23, -567, 70};
+//        int[] arr = {-9, 78, 0, 23, -567, 70};
+//
+//        sort(arr, 0, arr.length - 1);
+//        System.out.println(Arrays.toString(arr));
 
-        sort(arr, 0, arr.length - 1);
-        System.out.println(Arrays.toString(arr));
+        int[] num = new int[80000];
+        Random random = new Random();
+        for (int i = 0; i < 80000; i++) {
+            num[i] = random.nextInt(80000) + 1;
+
+        }
+        long start = System.currentTimeMillis();
+
+        sort(num, 0, 7999);
+
+        long end = System.currentTimeMillis();
+        System.out.println("耗时：" + (end - start) + "毫秒");//耗时1毫秒
 
 
     }

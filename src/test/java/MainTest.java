@@ -24,4 +24,17 @@ public class MainTest {
 
 
     }
+
+    @Test
+    public void test2(){
+        String s="CSInstanceEnd";
+        if(s.startsWith("C")){
+            System.out.println(s);
+
+        }else{
+            System.out.println("不是以C开头");
+        }
+
+    }
+
 }
