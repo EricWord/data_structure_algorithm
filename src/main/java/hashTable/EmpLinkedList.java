@@ -43,15 +43,15 @@ public class EmpLinkedList {
     }
 
     //遍历员工信息
-    public void list() {
+    public void list(int no) {
         //链表为空
         if (head == null) {
-            System.out.println("当前链表为空");
+            System.out.println("第" + no + "条链表为空");
             return;
 
         }
 
-        System.out.println("当前链表的信息为：");
+        System.out.print("第" + no + "条链表的信息为：");
         //辅助指针
         Emp cur = head;
         while (true) {
@@ -64,5 +64,50 @@ public class EmpLinkedList {
 
             cur = cur.getNext();
         }
+        System.out.println();
+    }
+
+
+    /**
+     * 根据id查找雇员
+     *
+     * @param id 员工id
+     * @return
+     */
+    public Emp findEmpByID(int id) {
+        //判断链表是否为空
+        if (null == head) {
+            System.out.println("链表空");
+            return null;
+
+        }
+
+        //辅助指针
+        Emp cur = head;
+        while (true) {
+
+
+            //找到
+            if (cur.getId() == id) {
+                break;
+
+
+            }
+
+            //退出的条件
+            if (null == cur.getNext()) {
+                //链表遍历完毕没有找到
+                cur = null;
+
+                break;
+            }
+            //后移
+            cur = cur.getNext();
+
+        }
+
+
+        return cur;
+
     }
 }
