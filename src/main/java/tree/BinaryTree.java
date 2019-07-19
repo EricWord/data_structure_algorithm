@@ -11,7 +11,6 @@ public class BinaryTree {
     private HeroNode root;
 
 
-
     /**
      * 前序遍历
      */
@@ -47,6 +46,52 @@ public class BinaryTree {
         } else {
             System.out.println("当前二叉树为空，无法进行遍历！");
         }
+    }
+
+
+    //前序遍历查找
+    public HeroNode preOrderSearch(int no) {
+        if (null != this.getRoot()) {
+            return this.getRoot().preOrderSearch(no);
+
+        } else {
+            return null;
+        }
+
+    }
+
+    /**
+     * 中序遍历查找
+     *
+     * @param no 编号
+     * @return
+     */
+    public HeroNode inOrderSearch(int no) {
+        if (null != this.getRoot()) {
+            return this.getRoot().inOrderSearch(no);
+
+        } else {
+            return null;
+        }
+
+    }
+
+
+    /**
+     * 后序遍历查找
+     *
+     * @param no 编号
+     * @return
+     */
+    public HeroNode postOrderSearch(int no) {
+        if (null != this.getRoot()) {
+            return this.getRoot().postOrderSearch(no);
+
+        } else {
+            return null;
+        }
+
+
     }
 
     public HeroNode getRoot() {

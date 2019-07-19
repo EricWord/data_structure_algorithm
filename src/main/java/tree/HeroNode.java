@@ -79,6 +79,107 @@ public class HeroNode {
         System.out.println(this);
     }
 
+    /**
+     * 前序遍历查找
+     *
+     * @param no 雇员编号
+     * @return
+     */
+    public HeroNode preOrderSearch(int no) {
+        //判断当前结点是否是要查找的结点
+        if (this.getNo() == no) {
+            return this;
+
+        }
+
+        HeroNode resNode = null;
+        //左结点不为空
+        if (null != this.getLeft()) {
+
+            resNode = this.getLeft().preOrderSearch(no);
+
+        }
+
+        if (null != resNode) {
+            //说明左子树找到
+            return resNode;
+
+        }
+
+        //向右递归
+        if (null != this.getRight()) {
+            resNode = this.getRight().preOrderSearch(no);
+
+        }
+
+
+        return resNode;
+
+    }
+
+
+    //中序遍历查找
+    public HeroNode inOrderSearch(int no) {
+        //左根右
+        HeroNode res = null;
+        //判断当前结点的左子树是否为空
+        if (null != this.getLeft()) {
+            res = this.getLeft().inOrderSearch(no);
+        }
+
+        if (null != res) {
+            return res;
+
+        }
+        if (this.getNo() == no) {
+            return this;
+
+        }
+
+        //判断当前结点的右结点是否为空
+        if (null != this.getRight()) {
+            res = this.getRight().inOrderSearch(no);
+
+        }
+
+
+        return res;
+
+    }
+
+
+    //后序遍历查找
+    public HeroNode postOrderSearch(int no) {
+        //左右根
+        HeroNode res = null;
+        //判断当前结点的左子树是否为空
+        if (null != this.getLeft()) {
+            res = this.getLeft().postOrderSearch(no);
+
+
+        }
+        if (null != res) {
+            return res;
+        }
+        //判断当前结点的右结点是否为空
+        if (null != this.getRight()) {
+            res = this.getRight().postOrderSearch(no);
+
+        }
+
+        if (null != res) {
+            return res;
+        }
+        //判断当前结点是否与要查找的目标结点相同
+        if (this.getNo() == no) {
+            return this;
+
+        }
+
+        return res;
+
+    }
+
     public int getNo() {
         return no;
     }
