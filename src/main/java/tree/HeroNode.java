@@ -86,6 +86,7 @@ public class HeroNode {
      * @return
      */
     public HeroNode preOrderSearch(int no) {
+        System.out.println("进入前序遍历查找");
         //判断当前结点是否是要查找的结点
         if (this.getNo() == no) {
             return this;
