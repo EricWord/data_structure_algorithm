@@ -94,6 +94,33 @@ public class BinaryTree {
 
     }
 
+    /**
+     * 删除结点
+     *
+     * @param no 要删除的结点编号
+     */
+    public void delNode(int no) {
+        //根结点不为空
+        if (null != this.getRoot()) {
+            //根结点就是要删除的结点
+            if (this.getRoot().getNo() == no) {
+                this.setRoot(null);
+
+            } else {
+
+
+                //递归进行删除
+                this.getRoot().delNode(no);
+            }
+
+
+        } else {
+
+            System.out.println("空树不能删除！");
+        }
+
+    }
+
     public HeroNode getRoot() {
         return root;
     }

@@ -32,15 +32,22 @@ public class BinaryTreeDemo {
 //        System.out.println("中序遍历");
 //        binaryTree.inOrder();
 
-        System.out.println("前序遍历查找：");
-        HeroNode heroNode = binaryTree.preOrderSearch(25);
-        if (null != heroNode) {
-            System.out.printf("找到了，信息为No=%d,name=%s", heroNode.getNo(), heroNode.getName());
+//        System.out.println("前序遍历查找：");
+//        HeroNode heroNode = binaryTree.preOrderSearch(25);
+//        if (null != heroNode) {
+//            System.out.printf("找到了，信息为No=%d,name=%s", heroNode.getNo(), heroNode.getName());
+//
+//        } else {
+//
+//            System.out.println("没有找到");
+//        }
 
-        } else {
-
-            System.out.println("没有找到");
-        }
+        //删除结点
+        System.out.println("删除前，前序遍历：");
+        binaryTree.preOrder();
+        binaryTree.delNode(3);
+        System.out.println("删除后，前序遍历：");
+        binaryTree.preOrder();
 
 
     }

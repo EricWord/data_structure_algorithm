@@ -181,6 +181,47 @@ public class HeroNode {
 
     }
 
+
+    /**
+     * 递归删除结点
+     * 因为二叉树是单向的，所以是判断当前结点的子结点是否需要删除结点，而不能去判断当前这个结点是否需要删除结点
+     * <p>
+     * 1.如果删除的结点是叶子结点，则删除该结点
+     * 2.如果删除的是非叶子结点，则删除该子树
+     *
+     * @param no 结点编号
+     */
+    public void delNode(int no) {
+        //判断左子树是的根结点否是要删除的结点
+        if (null != this.getLeft() && this.getLeft().getNo() == no) {
+            this.setLeft(null);
+            return;
+
+        }
+
+
+        //判断右子树的根结点是否是要删除的结点
+        if (null != this.getLeft() && this.getRight().getNo() == no) {
+            this.setRight(null);
+            return;
+
+        }
+
+        //向左子树进行递归删除
+        if (null != this.getLeft()) {
+            this.getLeft().delNode(no);
+
+
+        }
+        //向右子树进行递归删除
+        if (null != this.getRight()) {
+            this.getRight().delNode(no );
+
+        }
+
+
+    }
+
     public int getNo() {
         return no;
     }
